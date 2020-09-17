@@ -46,11 +46,16 @@ Go to the folder with robonomics file ad create a local robonomics network:
 ```bash
 ./robonomics --dev --rpc-cors all
 ```
+
 ![robonomics](https://github.com/LoSk-p/media/blob/master/2.png)
+
 Go to https://parachain.robonomics.network and switch to local node
 ![local](https://github.com/LoSk-p/media/blob/master/3.png)
+
 Then go to Accounts and create KUKA and WORK accounts. Save account's names and keys, you will need them later
+
 ![acc](https://github.com/LoSk-p/media/blob/master/4.png)
+
 ![accs](https://github.com/LoSk-p/media/blob/master/Screenshot%20from%202020-09-18%2001-07-56.png)
 
 
