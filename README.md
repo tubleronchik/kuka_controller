@@ -1,4 +1,4 @@
-#### Control Kuka manipulator with robonomics.
+# Control Kuka manipulator with robonomics.
 Video with an example of work can be found 
 ***
 ## Requirements
@@ -39,6 +39,7 @@ In a new window
 ```bash
 rosrun manipulator_gazebo move_arm_server
 ```
+![model](https://github.com/LoSk-p/media/blob/master/1.png)
 ***
 ## Running robonomics
 Go to the folder with robonomics file ad create a local robonomics network:
