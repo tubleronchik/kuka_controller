@@ -2,7 +2,7 @@
 Video with an example of work can be found [here](https://youtu.be/Fhf9LIt6zXQ)
 ***
 ## Requirements
-* ROS melodic, Gazebo (installation instraction [here](http://wiki.ros.org/melodic/Installation/Ubuntu)
+* ROS melodic, Gazebo (installation instraction [here](http://wiki.ros.org/melodic/Installation/Ubuntu))
 * Some extra packages
 ```bash
 sudo apt-get install ros-melodic-gazebo-ros-control ros-melodic-effort-controllers ros-melodic-joint-state-controller
@@ -58,11 +58,13 @@ Then go to Accounts and create KUKA and WORK accounts. Save account's names and 
 ![acc](https://github.com/LoSk-p/media/blob/master/4.png)
 
 ![accs](https://github.com/LoSk-p/media/blob/master/Screenshot%20from%202020-09-18%2001-07-56.png)
+***
 ## Running ipfs
-Run ipfs daemon
+Run ipfs daemon:
 ```bash
 ipfs daemon
 ```
+***
 ## Running control package
 In kuka_control package path:
 ```bash
@@ -75,17 +77,22 @@ Then in a new window send a transaction to make Kuka move:
 ```bash
 echo "ON" | ./robonomics io write launch -r <KUKA_ADDRESS> -s <WORK_KEY>
 ```
-Where <KUKA_ADDRESS> and <WORK_KEY> are address and key from your accounts
+Where <KUKA_ADDRESS> and <WORK_KEY> are address and key from your accounts:
+
 ![transaction](https://github.com/LoSk-p/media/blob/master/7.png)
 
 In the window with kuka_control package you will see:
+
 ![done](https://github.com/LoSk-p/media/blob/master/8.png)
 
-Then go Developer/Chain state on the Robonomics portal, select datalog in query and add KUKA datalog with button '+'
+Then go Developer/Chain state on the Robonomics portal, select datalog in query and add KUKA datalog with button '+':
+
 ![datalog](https://github.com/LoSk-p/media/blob/master/9.png)
 
 Now you can find Kuka's telemetry using this hash in IPFS Companion:
+
 ![ipfs](https://github.com/LoSk-p/media/blob/master/10.png)
+
 ![telemetry](https://github.com/LoSk-p/media/blob/master/11.png)
 
 
