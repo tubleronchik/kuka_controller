@@ -66,9 +66,17 @@ ipfs daemon
 ```
 ***
 ## Running control package
-In kuka_control package path:
+In kuka_control package path you need to edit move_arm_client.py.:
 ```bash
 cd src/
+nano move_arm_client.py
+```
+Change kuka_address, kuka_key and work_address to you addresses and key, then change robonomics_path to your path to file robonomics.
+
+![code](https://github.com/LoSk-p/media/blob/master/code.jpg)
+
+Now you can run control script:
+```bash
 python move_arm_client.py
 ```
 ![control](https://github.com/LoSk-p/media/blob/master/6.png)
