@@ -37,10 +37,12 @@ catkin_make
 ***
 ## Running gazebo model
 ```bash
+source ~/catkin_ws/devel/setup.bash
 roslaunch manipulator_gazebo manipulator_empty_world.launch
 ```
 In a new window
 ```bash
+source ~/catkin_ws/devel/setup.bash
 rosrun manipulator_gazebo move_arm_server
 ```
 ![model](media/1.png)
@@ -82,6 +84,7 @@ In config directory in kuka_control package you need to create config file with 
 
 Now you can run control script:
 ```bash
+source ~/catkin_ws/devel/setup.bash
 rosrun kuka_controller move_arm_client.py
 ```
 ![control](media/run.png)
