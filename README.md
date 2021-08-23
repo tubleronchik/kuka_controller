@@ -1,5 +1,5 @@
 # Control Kuka manipulator with robonomics.
-Video with an example of work can be found [here](https://youtu.be/Fhf9LIt6zXQ)
+Video with an example of work can be found [here](https://youtu.be/z55HepXbHr8)
 ***
 ## Requirements
 * ROS melodic, Gazebo (installation instraction [here](http://wiki.ros.org/melodic/Installation/Ubuntu))
