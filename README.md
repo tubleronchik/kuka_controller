@@ -16,7 +16,11 @@ ipfs init
 ```
 * ipfshttpclient
 ```bash
-pip install ipfshttpclient
+pip3 install ipfshttpclient
+```
+* substrate-interface
+```bash
+pip3 install substrate-interface
 ```
 * Robonomics node (binary file) (download latest release [here](https://github.com/airalab/robonomics/releases))
 * IPFS browser extension (not necessary)
@@ -39,25 +43,27 @@ In a new window
 ```bash
 rosrun manipulator_gazebo move_arm_server
 ```
-![model](https://github.com/LoSk-p/media/blob/master/1.png)
+![model](media/1.png)
 ***
 ## Running robonomics
 Go to the folder with robonomics file ad create a local robonomics network:
 ```bash
-./robonomics --dev --rpc-cors all
+./robonomics --dev --tmp
 ```
 
-![robonomics](https://github.com/LoSk-p/media/blob/master/2.png)
+![robonomics](media/robonomics.png)
 
 Go to https://parachain.robonomics.network and switch to local node
 
-![local](https://github.com/LoSk-p/media/blob/master/3.png)
+![local](media/local.png)
 
-Then go to Accounts and create KUKA and WORK accounts. Save account's names and keys, you will need them later
+Then go to Accounts and create `KUKA` account. Save account's mnemonic key, you will need it later. 
 
-![acc](https://github.com/LoSk-p/media/blob/master/4.png)
+![acc](media/create_acc.png)
 
-![accs](https://github.com/LoSk-p/media/blob/master/Screenshot%20from%202020-09-18%2001-07-56.png)
+Send some units to the new account from one of default accounts.
+
+![accs](media/send_money.png)
 ***
 ## Running ipfs
 Run ipfs daemon:
@@ -66,42 +72,34 @@ ipfs daemon
 ```
 ***
 ## Running control package
-In kuka_control package path you need to edit move_arm_client.py.:
+In config directory in kuka_control package you need to create config file with this lines, where `<your_mnemonic>` is saved mnemonic seed:
 ```bash
-cd src/
-nano move_arm_client.py
+{
+    "kuka_mnemonic": "<your_mnemonic>",
+    "node": "ws://127.0.0.1:9944"
+}
 ```
-Change kuka_address, kuka_key and work_address to you addresses and key, then change robonomics_path to your path to file robonomics.
-
-![code](https://github.com/LoSk-p/media/blob/master/code.jpg)
 
 Now you can run control script:
 ```bash
-python move_arm_client.py
+rosrun kuka_controller move_arm_client.py
 ```
-![control](https://github.com/LoSk-p/media/blob/master/6.png)
+![control](media/run.png)
 
-Then in a new window send a transaction to make Kuka move:
-```bash
-echo "ON" | ./robonomics io write launch -r <KUKA_ADDRESS> -s <WORK_KEY>
-```
-Where <KUKA_ADDRESS> and <WORK_KEY> are address and key from your accounts:
+## Sending transaction
+In https://parachain.robonomics.network go to `Developer/Extrinsics`, change `extrinsic` to `launch`. Chose your `KUKA` account in `robot` and change `param` to `Yes`. The press `Submit Transaction`
 
-![transaction](https://github.com/LoSk-p/media/blob/master/7.png)
+![transaction](media/launch.png)
 
 In the window with kuka_control package you will see:
 
-![done](https://github.com/LoSk-p/media/blob/master/8.png)
+![done](media/res.png)
 
-Then go Developer/Chain state on the Robonomics portal, select datalog in query and add KUKA datalog with button '+':
+Then go `Developer/Chain State` on the Robonomics portal, select `datalog` and `datalogItem((AccountId,u64)): RingBufferItem` in query and add `KUKA` datalog with button '+':
 
-![datalog](https://github.com/LoSk-p/media/blob/master/9.png)
+![datalog](media/datalog.png)
 
-Now you can find Kuka's telemetry using this hash in IPFS Companion:
-
-![ipfs](https://github.com/LoSk-p/media/blob/master/10.png)
-
-![telemetry](https://github.com/LoSk-p/media/blob/master/11.png)
+Now you can find robot's telemetry in IPFS via this link with your hash `https://gateway.ipfs.io/ipfs/<hash>`.
 
 
 
